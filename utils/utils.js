@@ -9,10 +9,9 @@ const pool = mysql.createPool({
   database: 'book',
   port: 3306
 })
-
 const query = function (sql, option, callback) {
   pool.getConnection(function (err, connection) {
-    // Use the connection
+    // Use the connection    
     connection.query(sql, option, function (error, results, fields) {
       // And done with the connection.
       connection.release()
@@ -24,5 +23,6 @@ const query = function (sql, option, callback) {
     })
   })
 }
+
 
 module.exports = query

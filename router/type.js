@@ -19,7 +19,7 @@ function getType(type) {
 
 //玄幻1 修真2 都市3 历史4 网游5
 const router = (req, res) => {
-  let type = getType(req.query.type)
+  let type = getType(req.query.type);
   //坑1 sql语句中要加上引号
   query(`select * from booklist where type='${type}'`, [1], (err, results, fields) => {
     if (err) throw err
