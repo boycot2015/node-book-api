@@ -28,6 +28,7 @@ app.get('/titles', require('./router/booktitles'))
 app.get('/type', require('./router/type'))
 
 app.get('/banner', require('./router/banner'))
+app.get('/top', require('./router/top'))
 
 const port = process.env.PORT || 3333
 
