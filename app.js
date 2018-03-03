@@ -2,7 +2,10 @@
  * Created by 12 on 2017/7/3.
  */
 const express = require('express')
+const bodyParser = require('body-parser');
 const app = express()
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
 
 // 跨域设置
 app.all('*', function (req, res, next) {
@@ -29,6 +32,8 @@ app.get('/type', require('./router/type'))
 
 app.get('/banner', require('./router/banner'))
 app.get('/top', require('./router/top'))
+app.get('/savebook', require('./router/savebook'))
+app.post('/login', require('./router/user/login'))
 
 const port = process.env.PORT || 3333
 
