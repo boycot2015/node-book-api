@@ -6,8 +6,7 @@ const router = (req, res) => {
     if (req.body.hasOwnProperty(key)) {     
       userData = JSON.parse(key);    
     }
-  }
-  
+  } 
   query(`select * from user where username='${userData.account}' and password='${userData.password}';`, [1], (err, results, fields) => {
     if (err) throw err
     console.log(results);
@@ -17,13 +16,17 @@ const router = (req, res) => {
         message:'用户名或密码错误！'
       }))
     }else{
-      res.send(JSON.stringify({
-        code:200,
-        message:'登录成功！'
-      }))
       query(`update user set islogin='true';`, [1], (err, results, fields) => {
         if (err) throw err
       })
+      res.send(JSON.stringify({
+        code:200,
+        message:'登录成功！',
+        userinfo:{
+          username:results[0].username,
+          likebookid:results[0].likebookid
+        }
+      }))      
     }
   })
 }

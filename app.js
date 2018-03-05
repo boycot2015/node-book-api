@@ -34,9 +34,10 @@ app.get('/banner', require('./router/banner'))
 app.get('/top', require('./router/top'))
 app.get('/savebook', require('./router/savebook'))
 app.post('/login', require('./router/user/login'))
+app.post('/register', require('./router/user/register'))
 
-const port = process.env.PORT || 3333
+const port = process.env.PORT || 3001
 
-app.listen(3333, () => {
+app.listen(3001, () => {
   console.log(`server running @${port}`)
 })
